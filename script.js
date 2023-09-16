@@ -23,7 +23,7 @@ function refreshScreen() {
 }
 
 function selectNumber(number) {
-    let operators = "*%-+";
+    let operators = "*%-+/";
     if (operators.includes(displayValue)) {
         displayValue = "";
     }
@@ -45,7 +45,7 @@ function deleteLastInput() {
     refreshScreen();
 }
 
-function selectOperator() {
+function selectOperator(op) {
     if (!operator) {
         firstNumber = Number(displayValue);
     }
@@ -53,8 +53,8 @@ function selectOperator() {
         secondNumber = Number(displayValue);
         firstNumber = operate(operator, firstNumber, secondNumber);
     }
-    operator = operatorObj[this.textContent];
-    displayValue = this.textContent;
+    operator = operatorObj[op];
+    displayValue = op;
     refreshScreen();
 }
 
@@ -95,10 +95,11 @@ const operatorObj = {
     "+": add,
     "*": multiply,
     "%": divide,
+    "/": divide,
 };
 
 document.querySelectorAll(".number").forEach( button => button.addEventListener("click", (e) => selectNumber(e.target.textContent)));
-document.querySelectorAll(".operator").forEach( button => button.addEventListener("click", selectOperator));
+document.querySelectorAll(".operator").forEach( button => button.addEventListener("click", (e) => selectOperator(e.target.textContent)));
 document.querySelector("#clear").addEventListener("click", clearCalculatorScreen);
 document.querySelector("#delete").addEventListener("click", deleteLastInput);
 document.querySelector("#equal").addEventListener("click", calculate);
@@ -107,9 +108,17 @@ document.querySelector("#decimalPoint").addEventListener("click", addDecimalPoin
 // keyboard support
 
 document.addEventListener('keydown', (e) => {
-    operators = "+-*/"
-    if (0 <= e.key <= 9) {
+    e.preventDefault();
+    operators = "+-*/%";
+    numbers = '123456789';
+    if (numbers.includes(e.key)) {
         selectNumber(e.key);
+    }
+    if (operators.includes(e.key)) {
+        selectOperator(e.key);
+    }
+    if (e.key == '=' || e.key == 'Enter') {
+        calculate();
     }
     }
 );
