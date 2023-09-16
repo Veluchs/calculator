@@ -123,5 +123,11 @@ document.addEventListener('keydown', (e) => {
     if (e.key == '.' || e.key == ",") {
         addDecimalPoint();
     }
+    if (e.key == 'Backspace') {
+        deleteLastInput();
+    }
+    if (e.key == 'Delete') {
+        clearCalculatorScreen();
+    }
     }
 );
