@@ -78,7 +78,7 @@ function addDecimalPoint() {
         return;
     }
 
-    let operators = "*%-+";
+    let operators = "*%-+/";
     if (operators.includes(displayValue)) {
         displayValue = "0";
     }
@@ -119,6 +119,9 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.key == '=' || e.key == 'Enter') {
         calculate();
+    }
+    if (e.key == '.' || e.key == ",") {
+        addDecimalPoint();
     }
     }
 );
