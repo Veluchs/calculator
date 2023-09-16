@@ -42,7 +42,8 @@ body {
 }
 
 .button {
-    flex: 1;
+    box-sizing: border-box;
+    width: 80px;
     border-style: solid;
     border-width: 2px;
     border-color: #3a3430;
@@ -62,10 +63,15 @@ body {
 }
 
 #equal {
-    flex: 2;
+    flex: auto;
+    width: 170px;
     background-color: #E57C23;
 }
 
 .operator {
     background-color: #9BABB8;
+}
+
+#clear, #delete {
+    width: 125px;
 }
