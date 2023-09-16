@@ -76,3 +76,11 @@ body {
 #clear, #delete {
     width: 125px;
 }
+
+#clear {
+    background-color: #FFC6AC;
+}
+
+#delete {
+    background-color: #FFC6AC;
+}
