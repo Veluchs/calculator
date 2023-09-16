@@ -22,12 +22,12 @@ function refreshScreen() {
     screen.textContent = displayValue;
 }
 
-function selectNumber() {
+function selectNumber(number) {
     let operators = "*%-+";
     if (operators.includes(displayValue)) {
         displayValue = "";
     }
-    let number = this.textContent;
+
     displayValue += number;
     refreshScreen();
 }
@@ -97,9 +97,19 @@ const operatorObj = {
     "%": divide,
 };
 
-document.querySelectorAll(".number").forEach( button => button.addEventListener("click", selectNumber));
+document.querySelectorAll(".number").forEach( button => button.addEventListener("click", (e) => selectNumber(e.target.textContent)));
 document.querySelectorAll(".operator").forEach( button => button.addEventListener("click", selectOperator));
 document.querySelector("#clear").addEventListener("click", clearCalculatorScreen);
 document.querySelector("#delete").addEventListener("click", deleteLastInput);
 document.querySelector("#equal").addEventListener("click", calculate);
 document.querySelector("#decimalPoint").addEventListener("click", addDecimalPoint);
+
+// keyboard support
+
+document.addEventListener('keydown', (e) => {
+    operators = "+-*/"
+    if (0 <= e.key <= 9) {
+        selectNumber(e.key);
+    }
+    }
+);
