@@ -73,6 +73,19 @@ function calculate() {
     refreshScreen();
 }
 
+function addDecimalPoint() {
+    if (displayValue.includes(".")) {
+        return;
+    }
+
+    let operators = "*%-+";
+    if (operators.includes(displayValue)) {
+        displayValue = "0";
+    }
+    displayValue += ".";
+    refreshScreen();
+}
+
 let firstNumber, secondNumber, operator;
 let displayValue = "";
 
@@ -89,4 +102,4 @@ document.querySelectorAll(".operator").forEach( button => button.addEventListene
 document.querySelector("#clear").addEventListener("click", clearCalculatorScreen);
 document.querySelector("#delete").addEventListener("click", deleteLastInput);
 document.querySelector("#equal").addEventListener("click", calculate);
-
+document.querySelector("#decimalPoint").addEventListener("click", addDecimalPoint);
