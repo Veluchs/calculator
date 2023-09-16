@@ -64,7 +64,7 @@ function calculate() {
     }
     secondNumber = Number(displayValue);
     result = operate(operator, firstNumber, secondNumber);
-    displayValue = result;
+    displayValue = result.toString();
 
     firstNumber = result;
     operator = null;
