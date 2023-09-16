@@ -62,6 +62,9 @@ function calculate() {
     if (!operator || !firstNumber) {
         return;
     }
+    if (isNaN(displayValue)) {
+        return;
+    }
     secondNumber = Number(displayValue);
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result.toString();
