@@ -1,5 +1,3 @@
-let MAX_SCREEN_LENGTH = 20;
-
 function add(a, b) {
     return a + b;
 }
@@ -25,9 +23,6 @@ function refreshScreen() {
 }
 
 function selectNumber(number) {
-    if (displayValue.length >= MAX_SCREEN_LENGTH) {
-        return;
-    }
     let operators = "*%-+/";
     if (operators.includes(displayValue)) {
         displayValue = "";
@@ -82,9 +77,6 @@ function calculate() {
 }
 
 function addDecimalPoint() {
-    if (displayValue.length >= MAX_SCREEN_LENGTH) {
-        return;
-    }
     if (displayValue.includes(".")) {
         return;
     }
@@ -121,7 +113,7 @@ document.querySelector("#decimalPoint").addEventListener("click", addDecimalPoin
 document.addEventListener('keydown', (e) => {
     e.preventDefault();
     operators = "+-*/%";
-    numbers = '0123456789';
+    numbers = '123456789';
     if (numbers.includes(e.key)) {
         selectNumber(e.key);
     }
