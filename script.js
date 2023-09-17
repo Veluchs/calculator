@@ -58,6 +58,7 @@ function selectOperator(op) {
     refreshScreen();
 }
 
+
 function calculate() {
     if (!operator || !firstNumber) {
         return;
